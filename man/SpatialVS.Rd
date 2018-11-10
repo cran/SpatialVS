@@ -57,7 +57,7 @@ Xie, Y., Xu, L., Li, J., Deng, X., Hong, Y., Kolivras, K., and Gaines, D. N. (20
 }
 
 \examples{
-#use small.test.dat as the input to fit the spatial Poission regression model.
+#use small.test.dat as the input to fit the spatial Poisson regression model.
 #a grid of alpha.vec and lambda.vec is typically used.
 #Here one point of alpha.vec and lambda.vec is used for fast illustration.
 

@@ -6,7 +6,7 @@
   \item{\code{y}}{Integer vector, the response variable, which is count data.}
   \item{\code{X}}{Numeric matrix, the model matrix contains covariate information.}
   \item{\code{offset}}{Numeric vector, vector for offset values.}
-  \item{\code{dist}}{Numeric matrix, a matrix for pairewise distance.}
+  \item{\code{dist}}{Numeric matrix, a matrix for pairwise distance.}
 }}
 \usage{
 small.test.dat

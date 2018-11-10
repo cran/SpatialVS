@@ -1274,4 +1274,16 @@ iwls_b_new=function(X, y, D, offset, beta, b, tol, dist)    #penalty for zero su
 
 }
 
+distmat.compute=function(location, dist.min)
+{
+  #library(fields)
+  tmp.dist=fields::rdist.earth(location, miles=FALSE, R=6371)
+  #manual fix those distannces are to close to zero, which might cause
+  #problems in parameter estimation.
+  tmp.dist[tmp.dist<dist.min]=dist.min
+  diag(tmp.dist)=0
+  
+  return(tmp.dist)
+}
+
 

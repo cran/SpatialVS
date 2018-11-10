@@ -9,6 +9,7 @@
   \item{\code{X}}{Numeric matrix, matrix of covariates, includes percentage of developed land in each census tract, percentage of forest in each census tract, etc.}
   \item{\code{offset}}{Numeric vector, vector for offset values, each element represents the log of population divided by 20,000 in census tract.}
   \item{\code{location}}{Numeric matrix, location for each census tract.}
+  \item{\code{geoid}}{Numeric vector, geo id for each census tract.}
 }}
 \usage{
 lyme.svs.eco1.dat
@@ -17,6 +18,40 @@ lyme.svs.eco1.dat
 The Lyme disease dataset contains case data from 2006 to 2011 demographic
 data and land cover data in Virginia. Lyme disease case data were collected by Virginia Department of Health.
 Eco id = 1 represents the southern/eastern subregion, which includes Piedmont, Middle Atlantic Coastal Plain, and Southeastern Plains.
+
+The column names of X are listed as follows. The first column is the intercept column.
+
+x1: Dvlpd_NLCD06; Percentage of developed land in each census tract
+
+x2: Forest_NLCD06; Percentage of forest in each census tract
+
+x3: Herbaceous_NLCD06; Percentage of herbaceous in each census tract
+
+x4: X.Water_NLCD06; Percentage of water in each census tract
+
+x5: Tract_Frag06; Sum of area of forested fragments in each census tract divided by the total area
+
+x6: FragPerim06; Sum of forest fragment perimeters in each census tract divided by the total area
+
+x7: CWED_DF06; CWED of developed-forest edge
+
+x8: TECI_DF06; TECI of developed-forest edge
+
+x9: CWED_FH06; CWED of forest-herbaceous edge
+
+x10: TECI_FH06; TECI of forest-herbaceous edge
+
+x11: CWED_HD06; CWED of herbaceous-developed edge
+
+x12: TECI_HD06; TECI of herbaceous-developed edge
+
+x13: Pop_den; Tract population density in 2010
+
+x14: Median_age; Median age at each census tract in 2010
+
+x15: Mean_income; Mean income (inflation adjusted) at each census tract in 2010
+
+
 }
 
 \references{
@@ -25,15 +60,7 @@ Xie, Y., Xu, L., Li, J., Deng, X., Hong, Y., Kolivras, K., and Gaines, D. N. (20
 
 \examples{
 data("lyme.svs.eco1")
-
-#example for computing the distance matrix and add it to the data object.
-library(fields)
-tmp.dist=rdist.earth(lyme.svs.eco1.dat$location, miles=FALSE, R=6371)
-#manual fix those distannces are to close to zero, which might cause
-#problems in parameter estimation.
-tmp.dist[tmp.dist<0.2821849]=0.2821849
-diag(tmp.dist)=0
-lyme.svs.eco1.dat$dist=tmp.dist
+lyme.svs.eco1.dat$dist=distmat.compute(location=lyme.svs.eco1.dat$location, dist.min=0.2821849)
 
 }
 \keyword{datasets}

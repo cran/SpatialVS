@@ -14,6 +14,7 @@
 #'   \item{\code{X}}{Numeric matrix, matrix of covariates, includes percentage of developed land in each census tract, percentage of forest in each census tract, etc.}
 #'   \item{\code{offset}}{Numeric vector, vector for offset values, each element represents the population in one area.}
 #'   \item{\code{location}}{Numeric matrix, location for each census tract.}
+#'   \item{\code{geoid}}{Numeric vecotr, geo id for each census tract.}
 #' }
 #'
 #' @keywords datasets
